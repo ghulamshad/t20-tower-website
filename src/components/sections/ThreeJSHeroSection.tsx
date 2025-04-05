@@ -77,7 +77,7 @@ const CTAButton = styled(motion(Link))`
 
 const ThreeJSHeroSection: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [, setIsLoaded] = useState(false);
   
   useEffect(() => {
     if (!canvasRef.current) return;

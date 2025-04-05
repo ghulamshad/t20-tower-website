@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
@@ -12,7 +11,6 @@ import Footer from './components/Footer';
 import { theme } from './styles/theme';
 import GlobalStyles from './styles/GlobalStyles';
 import Navbar from './components/Navbar';
-import ContactUs from './components/ContactUs';
 import Amenities from './components/Amenities';
 import FloorPlans from './components/FloorPlans';
 

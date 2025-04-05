@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { 
   AppBar, 
   Toolbar, 
-  Typography, 
   Button, 
   IconButton, 
   Drawer, 
@@ -17,10 +16,9 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { styled } from '@mui/material/styles';
-import { motion } from 'framer-motion';
 
 // Styled components for MUI customization
-const StyledAppBar = styled(AppBar)(({ theme }) => ({
+const StyledAppBar = styled(AppBar)(() => ({
   background: 'transparent',
   boxShadow: 'none',
   transition: 'all 0.3s ease',
@@ -32,7 +30,7 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
   }
 }));
 
-const Logo = styled(Link)(({ theme }) => ({
+const Logo = styled(Link)(() => ({
   fontSize: '2.2rem',
   fontWeight: 700,
   color: 'var(--color-white)',
@@ -48,49 +46,9 @@ const Logo = styled(Link)(({ theme }) => ({
   }
 }));
 
-const NavButton = styled(Button)(({ theme }) => ({
-  color: 'var(--color-white)',
-  margin: '0 1rem',
-  position: 'relative',
-  '&::after': {
-    content: '""',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    width: 0,
-    height: '2px',
-    backgroundColor: 'var(--color-accent)',
-    transition: 'width 0.3s ease',
-  },
-  '&:hover': {
-    backgroundColor: 'transparent',
-    color: 'var(--color-accent)',
-    '&::after': {
-      width: '100%',
-    }
-  },
-  '&.active': {
-    '&::after': {
-      width: '100%',
-    }
-  }
-}));
 
-const CTAButton = styled(Button)(({ theme }) => ({
-  backgroundColor: 'var(--color-accent)',
-  color: 'var(--color-white)',
-  borderRadius: '50px',
-  padding: '0.75rem 1.5rem',
-  marginLeft: '2rem',
-  boxShadow: '0 4px 12px rgba(230, 177, 126, 0.2)',
-  '&:hover': {
-    backgroundColor: 'var(--color-accent-hover)',
-    transform: 'translateY(-2px)',
-    boxShadow: '0 6px 18px rgba(230, 177, 126, 0.3)',
-  }
-}));
 
-const StyledDrawer = styled(Drawer)(({ theme }) => ({
+const StyledDrawer = styled(Drawer)(() => ({
   '& .MuiDrawer-paper': {
     width: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.95)',
@@ -100,53 +58,8 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
   }
 }));
 
-const DrawerHeader = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  justifyContent: 'flex-end',
-  padding: theme.spacing(1),
-}));
 
-const DrawerListItem = styled(ListItem)(({ theme }) => ({
-  padding: '1rem 0',
-  '& .MuiListItemText-root': {
-    textAlign: 'left',
-  },
-  '& .MuiTypography-root': {
-    fontSize: '1.5rem',
-    color: 'var(--color-white)',
-    position: 'relative',
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: -5,
-      left: 0,
-      width: 0,
-      height: '2px',
-      backgroundColor: 'var(--color-accent)',
-      transition: 'width 0.3s ease',
-    },
-    '&:hover': {
-      color: 'var(--color-accent)',
-      '&::after': {
-        width: '50px',
-      }
-    }
-  }
-}));
 
-const DrawerCTAButton = styled(Button)(({ theme }) => ({
-  backgroundColor: 'var(--color-accent)',
-  color: 'var(--color-white)',
-  borderRadius: '50px',
-  padding: '0.75rem 2rem',
-  marginTop: '1rem',
-  alignSelf: 'flex-start',
-  '&:hover': {
-    backgroundColor: 'var(--color-accent-hover)',
-    transform: 'translateY(-2px)',
-    boxShadow: '0 6px 18px rgba(230, 177, 126, 0.3)',
-  }
-}));
 
 // Navigation links data
 const navLinks = [

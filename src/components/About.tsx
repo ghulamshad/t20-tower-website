@@ -165,7 +165,7 @@ const Timeline = styled.div`
   }
 `;
 
-const TimelineItem = styled(motion.div)`
+const TimelineItem = styled(motion.div)<{ align: string }>`
   display: flex;
   justify-content: ${props => props.align === 'right' ? 'flex-end' : 'flex-start'};
   margin-bottom: 3rem;
@@ -250,68 +250,24 @@ const About: React.FC = () => {
       <ContentSection>
         <ContentContainer>
           <SectionTitle>Our Story</SectionTitle>
-          <SectionText
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            Founded with a vision to redefine luxury living, we have been at the forefront
-            of creating exceptional residential spaces that combine architectural excellence
-            with modern comfort. Our commitment to quality and attention to detail has
-            earned us a reputation as a trusted name in premium real estate development.
+          <SectionText initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>
+            Founded with a vision to redefine luxury living, we have been at the forefront of creating exceptional residential spaces that combine architectural excellence with modern comfort.
           </SectionText>
-          <SectionText
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            With over two decades of experience, we have successfully delivered numerous
-            landmark projects that have transformed the urban landscape. Our team of
-            experts brings together diverse expertise in architecture, design, and
-            construction to create spaces that inspire and elevate the way people live.
+          <SectionText initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }}>
+            With over two decades of experience, we have delivered landmark projects that have transformed urban living.
           </SectionText>
 
           <ValuesGrid>
-            <ValueCard
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              <ValueTitle>Excellence</ValueTitle>
-              <ValueDescription>
-                We strive for excellence in every aspect of our projects, from design
-                to construction and customer service.
-              </ValueDescription>
-            </ValueCard>
-
-            <ValueCard
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              <ValueTitle>Innovation</ValueTitle>
-              <ValueDescription>
-                We embrace innovative solutions and technologies to create sustainable
-                and efficient living spaces.
-              </ValueDescription>
-            </ValueCard>
-
-            <ValueCard
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <ValueTitle>Integrity</ValueTitle>
-              <ValueDescription>
-                We conduct our business with the highest standards of integrity and
-                transparency.
-              </ValueDescription>
-            </ValueCard>
+            {[
+              { title: 'Excellence', text: 'We strive for excellence in every aspect of our projects.' },
+              { title: 'Innovation', text: 'We embrace innovative solutions and technologies.' },
+              { title: 'Integrity', text: 'We conduct our business with integrity and transparency.' },
+            ].map((value, index) => (
+              <ValueCard key={index} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }} viewport={{ once: true }}>
+                <ValueTitle>{value.title}</ValueTitle>
+                <ValueDescription>{value.text}</ValueDescription>
+              </ValueCard>
+            ))}
           </ValuesGrid>
         </ContentContainer>
       </ContentSection>
@@ -320,50 +276,18 @@ const About: React.FC = () => {
         <ContentContainer>
           <SectionTitle>Our Team</SectionTitle>
           <TeamGrid>
-            <TeamMember
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <MemberImage src="/assets/project-1.webp" alt="John Smith" />
-              <MemberName>John Smith</MemberName>
-              <MemberTitle>CEO & Founder</MemberTitle>
-              <MemberBio>
-                With over 20 years of experience in real estate development, John leads
-                our team with vision and expertise.
-              </MemberBio>
-            </TeamMember>
-
-            <TeamMember
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <MemberImage src="/assets/project-2.webp" alt="Sarah Johnson" />
-              <MemberName>Sarah Johnson</MemberName>
-              <MemberTitle>Head of Design</MemberTitle>
-              <MemberBio>
-                Sarah brings creativity and innovation to every project, ensuring our
-                designs are both beautiful and functional.
-              </MemberBio>
-            </TeamMember>
-
-            <TeamMember
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              <MemberImage src="/assets/project-3.webp" alt="Michael Brown" />
-              <MemberName>Michael Brown</MemberName>
-              <MemberTitle>Construction Manager</MemberTitle>
-              <MemberBio>
-                Michael oversees all construction activities, ensuring the highest
-                quality standards are maintained.
-              </MemberBio>
-            </TeamMember>
+            {[
+              { name: 'John Smith', title: 'CEO & Founder', bio: '20 years of real estate expertise.', img: '/assets/project-1.webp' },
+              { name: 'Sarah Johnson', title: 'Head of Design', bio: 'Creative and innovative designer.', img: '/assets/project-2.webp' },
+              { name: 'Michael Brown', title: 'Construction Manager', bio: 'Ensures top quality in construction.', img: '/assets/project-3.webp' },
+            ].map((member, index) => (
+              <TeamMember key={index} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.2 }} viewport={{ once: true }}>
+                <MemberImage src={member.img} alt={member.name} />
+                <MemberName>{member.name}</MemberName>
+                <MemberTitle>{member.title}</MemberTitle>
+                <MemberBio>{member.bio}</MemberBio>
+              </TeamMember>
+            ))}
           </TeamGrid>
         </ContentContainer>
       </TeamSection>
@@ -372,83 +296,20 @@ const About: React.FC = () => {
         <ContentContainer>
           <SectionTitle>Our Journey</SectionTitle>
           <Timeline>
-            <TimelineItem
-              align="left"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <TimelineContent>
-                <TimelineYear>2000</TimelineYear>
-                <TimelineText>
-                  Founded with a vision to redefine luxury living in urban spaces.
-                </TimelineText>
-              </TimelineContent>
-            </TimelineItem>
-
-            <TimelineItem
-              align="right"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <TimelineContent>
-                <TimelineYear>2005</TimelineYear>
-                <TimelineText>
-                  Completed our first major residential complex, setting new standards
-                  for luxury living.
-                </TimelineText>
-              </TimelineContent>
-            </TimelineItem>
-
-            <TimelineItem
-              align="left"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              <TimelineContent>
-                <TimelineYear>2010</TimelineYear>
-                <TimelineText>
-                  Expanded our portfolio to include commercial and mixed-use developments.
-                </TimelineText>
-              </TimelineContent>
-            </TimelineItem>
-
-            <TimelineItem
-              align="right"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <TimelineContent>
-                <TimelineYear>2015</TimelineYear>
-                <TimelineText>
-                  Launched our sustainable living initiative, incorporating eco-friendly
-                  features in all new projects.
-                </TimelineText>
-              </TimelineContent>
-            </TimelineItem>
-
-            <TimelineItem
-              align="left"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <TimelineContent>
-                <TimelineYear>2020</TimelineYear>
-                <TimelineText>
-                  Celebrated 20 years of excellence with over 50 completed projects
-                  and thousands of satisfied residents.
-                </TimelineText>
-              </TimelineContent>
-            </TimelineItem>
+            {[
+              { year: '2000', text: 'Founded with a vision to redefine luxury living.', align: 'left' },
+              { year: '2005', text: 'Completed our first residential complex.', align: 'right' },
+              { year: '2010', text: 'Expanded into commercial developments.', align: 'left' },
+              { year: '2015', text: 'Launched sustainable living initiative.', align: 'right' },
+              { year: '2020', text: 'Celebrated 20 years with 50+ projects.', align: 'left' },
+            ].map((item, index) => (
+              <TimelineItem key={index} align={item.align} initial={{ opacity: 0, x: item.align === 'left' ? -50 : 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: index * 0.2 }} viewport={{ once: true }}>
+                <TimelineContent>
+                  <TimelineYear>{item.year}</TimelineYear>
+                  <TimelineText>{item.text}</TimelineText>
+                </TimelineContent>
+              </TimelineItem>
+            ))}
           </Timeline>
         </ContentContainer>
       </TimelineSection>
@@ -457,46 +318,9 @@ const About: React.FC = () => {
         <ContentContainer>
           <SectionTitle>Our Partners</SectionTitle>
           <PartnersGrid>
-            <PartnerLogo
-              src="/assets/project-1.webp"
-              alt="Partner 1"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            />
-            <PartnerLogo
-              src="/assets/project-2.webp"
-              alt="Partner 2"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-            />
-            <PartnerLogo
-              src="/assets/project-3.webp"
-              alt="Partner 3"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              viewport={{ once: true }}
-            />
-            <PartnerLogo
-              src="/assets/project-1.webp"
-              alt="Partner 4"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              viewport={{ once: true }}
-            />
-            <PartnerLogo
-              src="/assets/project-2.webp"
-              alt="Partner 5"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-              viewport={{ once: true }}
-            />
+            {['/assets/partner1.webp', '/assets/partner2.webp', '/assets/partner3.webp', '/assets/partner4.webp'].map((logo, i) => (
+              <PartnerLogo key={i} src={logo} alt={`Partner ${i + 1}`} whileHover={{ scale: 1.05 }} />
+            ))}
           </PartnersGrid>
         </ContentContainer>
       </PartnersSection>
@@ -504,4 +328,4 @@ const About: React.FC = () => {
   );
 };
 
-export default About; 
+export default About;

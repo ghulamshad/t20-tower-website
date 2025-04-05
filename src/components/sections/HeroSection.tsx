@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { motion, useScroll, useTransform, useSpring, useVelocity } from 'framer-motion';
+import { motion, useScroll, useVelocity } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const HeroSectionContainer = styled.section`
@@ -74,7 +74,7 @@ const CTAButton = styled(motion(Link))`
 
 const HeroSection: React.FC = () => {
   const { scrollY } = useScroll();
-  const [scrollVelocity, setScrollVelocity] = useState(0);
+  const [, setScrollVelocity] = useState(0);
   
   // Track scroll velocity for dynamic effects
   const velocity = useVelocity(scrollY);

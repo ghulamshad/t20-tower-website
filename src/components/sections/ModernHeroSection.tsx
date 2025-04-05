@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-import { motion, useScroll, useTransform, useSpring, useMotionValue, useVelocity, useAnimation } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, useMotionValue, useAnimation } from 'framer-motion';
 import { Link } from 'react-router-dom';
 // Define image paths from public directory - using apartment images
 const heroImageXXL = '/assets/images/media/landing/apartments/buildings@md.webp';
 const heroImageMD = '/assets/images/media/landing/apartments/buildings@md.webp';
 const heroImageXS = '/assets/images/media/landing/apartments/buildings@xs.webp';
-const backgroundImage = '/assets/images/media/landing/apartments/background@md.webp';
+
 
 // Define luxury color palette
 const colors = {
@@ -270,7 +270,7 @@ const VerticalLine = styled(DecorativeLine)`
 const ModernHeroSection: React.FC = () => {
   const { scrollY } = useScroll();
   const [floatingElements, setFloatingElements] = useState<Array<{ id: number, x: number, y: number, size: number, opacity: number, delay: number, duration: number, yRange: number, xRange: number }>>([]);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
   
@@ -281,8 +281,6 @@ const ModernHeroSection: React.FC = () => {
   // Mouse movement effect
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const velocityX = useVelocity(mouseX);
-  const velocityY = useVelocity(mouseY);
   
   // Add image loading state
   const [imageLoaded, setImageLoaded] = useState(false);
