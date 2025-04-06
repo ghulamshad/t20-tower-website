@@ -18,8 +18,7 @@ const Home: React.FC = () => {
   return (
     <HomeContainer>
       <ModernHeroSection />
-      {/* <ThreeJSHeroSection /> */}
-      {/* <HeroSection /> */}
+      
       <IntroSection />
       <StatsSection />
       <FeaturedSection />

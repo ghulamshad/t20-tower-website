@@ -40,7 +40,11 @@ const BackgroundWrapper = styled(motion.div)`
   height: 100%;
   z-index: 1;
   overflow: hidden;
-  
+  iframe {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
   &::before {
     content: '';
     position: absolute;
@@ -383,6 +387,12 @@ const ModernHeroSection: React.FC = () => {
   return (
     <HeroContainer ref={containerRef}>
       <BackgroundWrapper style={{ y: springBackgroundY }}>
+      <iframe
+    src="https://www.youtube.com/embed/mbwuj58UEPg?autoplay=1&mute=1&controls=0&loop=1&playlist=mbwuj58UEPg"
+    title="YouTube video background"
+    allow="autoplay; fullscreen"
+    allowFullScreen
+  />
         <BackgroundImage 
           src={currentImage}
           alt="T20 Tower Islamabad"
@@ -404,7 +414,7 @@ const ModernHeroSection: React.FC = () => {
         }}
       />
       
-      <FloatingElements>
+      {/* <FloatingElements>
         {floatingElements.map((element) => (
           <FloatingElement
             key={element.id}
@@ -429,7 +439,7 @@ const ModernHeroSection: React.FC = () => {
             }}
           />
         ))}
-      </FloatingElements>
+      </FloatingElements> */}
       
       {/* Decorative lines */}
       <HorizontalLine 
