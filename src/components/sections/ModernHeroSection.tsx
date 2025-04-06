@@ -91,39 +91,39 @@ const BackgroundOverlay = styled(motion.div)`
   pointer-events: none;
 `;
 
-const FloatingElements = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  pointer-events: none;
-`;
+// const FloatingElements = styled.div`
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   z-index: 2;
+//   pointer-events: none;
+// `;
 
-const FloatingElement = styled(motion.div)`
-  position: absolute;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), rgba(212, 175, 55, 0.15));
-  border-radius: 50%;
-  backdrop-filter: blur(5px);
-  box-shadow: 
-    0 0 20px rgba(212, 175, 55, 0.2),
-    inset 0 0 15px rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  overflow: hidden;
+// const FloatingElement = styled(motion.div)`
+//   position: absolute;
+//   background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), rgba(212, 175, 55, 0.15));
+//   border-radius: 50%;
+//   backdrop-filter: blur(5px);
+//   box-shadow: 
+//     0 0 20px rgba(212, 175, 55, 0.2),
+//     inset 0 0 15px rgba(255, 255, 255, 0.1);
+//   border: 1px solid rgba(255, 255, 255, 0.1);
+//   overflow: hidden;
   
-  &::before {
-    content: '';
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    width: 30%;
-    height: 30%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
-    border-radius: 50%;
-    opacity: 0.5;
-  }
-`;
+//   &::before {
+//     content: '';
+//     position: absolute;
+//     top: 10%;
+//     left: 10%;
+//     width: 30%;
+//     height: 30%;
+//     background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+//     border-radius: 50%;
+//     opacity: 0.5;
+//   }
+// `;
 
 const ContentWrapper = styled(motion.div)`
   position: relative;
@@ -273,7 +273,7 @@ const VerticalLine = styled(DecorativeLine)`
 
 const ModernHeroSection: React.FC = () => {
   const { scrollY } = useScroll();
-  const [floatingElements, setFloatingElements] = useState<Array<{ id: number, x: number, y: number, size: number, opacity: number, delay: number, duration: number, yRange: number, xRange: number }>>([]);
+  // const [floatingElements, setFloatingElements] = useState<Array<{ id: number, x: number, y: number, size: number, opacity: number, delay: number, duration: number, yRange: number, xRange: number }>>([]);
   const [, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
@@ -326,20 +326,20 @@ const ModernHeroSection: React.FC = () => {
   }, [currentImage]);
   
   // Generate floating elements with more variety and faster animations
-  useEffect(() => {
-    const elements = Array.from({ length: 20 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 120 + 30,
-      opacity: Math.random() * 0.3 + 0.2,
-      delay: Math.random() * 1, // Reduced delay for faster start
-      duration: Math.random() * 3 + 2, // Reduced duration for faster movement
-      yRange: Math.random() * 40 + 15, // Increased range for more dramatic movement
-      xRange: Math.random() * 30 + 10 // Increased range for more dramatic movement
-    }));
-    setFloatingElements(elements);
-  }, []);
+  // useEffect(() => {
+  //   const elements = Array.from({ length: 20 }, (_, i) => ({
+  //     id: i,
+  //     x: Math.random() * 100,
+  //     y: Math.random() * 100,
+  //     size: Math.random() * 120 + 30,
+  //     opacity: Math.random() * 0.3 + 0.2,
+  //     delay: Math.random() * 1, // Reduced delay for faster start
+  //     duration: Math.random() * 3 + 2, // Reduced duration for faster movement
+  //     yRange: Math.random() * 40 + 15, // Increased range for more dramatic movement
+  //     xRange: Math.random() * 30 + 10 // Increased range for more dramatic movement
+  //   }));
+  //   // setFloatingElements(elements);
+  // }, []);
   
   // Handle mouse movement
   useEffect(() => {
